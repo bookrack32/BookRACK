@@ -1,0 +1,146 @@
+.bgimg{
+    background-image: url(pexels-engin-akyurt-2952871.jpg);
+    background-size: cover;
+    background-repeat:no-repeat;
+    height: 86%;
+    width: 100%;
+    opacity: 60%;
+}
+.mbox{
+    height:100vmax;width:100%;
+   
+}
+.header1{
+    height:4%;width:100%;
+    background-color: rgb(255, 0, 55);
+}
+.logo{
+    height: 4%;
+    width: 15%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    color:bisque;
+    font-size: 20px;
+    font-family: fantasy;
+}
+#mmenu{
+    list-style-type: none;
+    font-size: 16px;
+    font-family: fantasy;
+    color: bisque;
+    height: 55%;
+    padding-bottom: 20px;
+    background-color:bisque;
+}
+.header2{
+    float: right;
+    height: 100%;
+    width: 85%;
+}
+#menu{
+    color:rgb(246, 40, 81);
+    font-size:20px;
+    
+    text-decoration: none;
+    transition: 0.5s ease-out;
+}
+#toplist{
+    padding-left: 30px;
+    float: left;
+}
+#menu:hover{
+    color:bisque;
+    background-color:crimson;
+    transition: 0.2s ease-in;
+    text-shadow: 0 4px 6px 0 rgba(0,0,0,2);
+    transition-property: inherit;
+}
+#toplist input[type=search] {
+    float: right;
+    border: none;
+    color: rgb(255, 44, 86);
+    font-size: 17px;
+}
+.navigation{
+    background-image: url(pexels-fwstudio-164005.jpg);
+    background-size: cover;
+    background-repeat:no-repeat;
+    opacity: 100%;
+    height: 100%;
+    width: 15%;
+    float: left;
+}
+.navlist{
+
+}
+.card {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: 210px 210px 80px;
+    grid-template-areas: "image" "text" "stats";
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin:30px;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    font-family: roboto;
+    text-align: center;
+}
+.card-text {
+grid-area: text;
+}
+.card-stats {
+grid-area: stats; 
+}
+.card-image {
+grid-area: image;
+background: url("img1.jpg");
+border-top-left-radius: 15px;
+border-top-right-radius: 15px;
+background-size: cover;
+}
+.card-text {
+grid-area: text;
+margin: 25px;
+}
+.card-text .date {
+color: rgb(255, 7, 110);
+font-size:13px;
+}
+.card-text p {
+color: grey;
+font-size:15px;
+font-weight: 300;
+}
+.card-text h2 {
+margin-top:0px;
+font-size:28px;
+}
+.card-stats {
+grid-area: stats; 
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 1fr;
+
+border-bottom-left-radius: 15px;
+border-bottom-right-radius: 15px;
+background: rgb(255, 7, 110);
+}
+.card-stats .stat {
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+
+color: white;
+padding:10px;
+}
+.card:hover {
+transform: scale(1.02);
+box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+}
+
+
+
