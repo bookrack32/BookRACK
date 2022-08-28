@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookRack</title>
+    <link rel = "icon" href = 
+"icon.png" 
+        type = "image/x-icon">
+    <style>
+        * {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: montserrat;
+  width:100%;
+}
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 12%;
+    margin-top:;
+    height: 100vh;
+    width: 100vw;
+}
+.container {
+  width: var(--container);
+  height: fit-content;
+  margin-top:;
+  margin-left:;
+}
+.grid-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    -webkit-box-align: start;
+    -webkit-align-items: start;
+    -ms-flex-align: start;
+    align-items: start;
+    justify-items: center;
+    grid-gap: 4rem 3rem;
+}
+.grid-item {
+  display: block;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 17px 17px 20px -4px rgba(0,0,0,0.9);
+  border-radius: 7px;
+  transition: 0.2s;
+}
+.grid-item:hover{
+	transform:scale(1.05);
+  transition: 0.5s;
+  box-shadow: none;
+}
+.grid-item:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: -2rem;
+    left: 0;
+    margin: -1rem;
+    border-radius: 10px;
+    overflow: visible;
+    z-index: -1;
+    background: #ffffff68;
+    -webkit-clip-path: inset(2rem 0 4rem 2rem round 10px);
+    clip-path: inset(2rem 0 4rem 2rem round 10px);
+    contain: strict;
+    -webkit-transition: -webkit-clip-path 0.3s ease 0.1s;
+    transition: -webkit-clip-path 0.3s ease 0.1s;
+    transition: clip-path 0.3s ease 0.1s;
+    transition: clip-path 0.3s ease 0.1s, -webkit-clip-path 0.3s ease 0.1s;
+}
+
+
+
+.grid-item:hover::after {
+    -webkit-clip-path: inset(0 0 0 0 round 10px);
+    clip-path: inset(0 0 0 0 round 10px);
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    bottom: 0; 
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  display:;
+  box-shadow: 0px 4px 8px 0px rgba(175, 35, 235, 0.657);
+}
+.grid-header {
+    margin-bottom: 12px;
+}
+.grid-header > img,
+.authorAvatar > img{
+    border-radius: 6px;
+}
+.content-wrap {
+    display: grid;
+    grid-template-columns: 13% 85%;
+    column-gap: 2%;
+    align-items: center;
+    justify-content: center;
+}
+.title {
+    padding-left: 5px;
+}
+.title > h2 {
+    font-size: 17px;
+}
+span {
+    color: darkmagenta;
+    font-weight: 100;
+}
+
+
+.expand-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    appearance: none;
+    border: none;
+    padding: .5rem;
+    background: linear-gradient(to right, rgb(41, 128, 185), rgb(142, 68, 173));
+    border-radius: 6px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.4);
+    transform: translate(.25rem) scale(.9);
+    transition: .25s cubic-bezier(.5,0,.5,1);
+    opacity: 0;
+}
+.grid-item:hover .expand-btn {
+  opacity: 1;
+}
+.expand-btn:hover {
+    transform: translate(.25rem) scale(1.2);
+}
+.expand-btn:hover svg {
+  fill: #fff;
+} 
+.expand-btn svg {
+    display: block;
+    fill: #aaaebc;
+    width: 20px;
+    height: 20px;
+}
+
+button {
+    margin-right: 5px;
+    background: rgba(0,0,0,0.9);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem 0.2rem;
+    transition: .25s cubic-bezier(.5,0,.5,1);
+    border: unset;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 12px;
+	color: #fff;
+}
+button:hover {
+    background: #fff;
+    color: #000;
+}
+button > i {
+  margin-right: 5px;
+}
+button:hover i {
+  color: #47cf73;
+}
+.footer-wrap {
+    opacity: 0;
+    margin-top: 10px;
+    transition: .25s cubic-bezier(.5,0,.5,1);
+}
+.grid-item:hover .footer-wrap {
+  opacity: 1;
+}
+.banner-text {
+    width: 100%;
+	position: absolute;
+	z-index: 1;
+}
+
+.banner-text ul {
+	height: 50px;
+	margin-top: 7%;
+	margin-left: 17%;
+	display: flex;
+	justify-content: center;
+	box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.9);
+	width:65%;
+	border-radius: 5px;
+}
+.banner-text ul li {
+	display: inline-block;
+	padding:  6px;
+	padding-left: 5%;
+	padding-right: 5%;
+	cursor: pointer;
+	transition: 0.4s;
+	
+}
+.banner-text ul li:hover{
+	background-color: rgba(255, 255, 255, 0.47);
+	transform: scale(1.2);
+	border-radius: 10px;
+	box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.9);
+}
+.banner-text ul li a {
+	text-decoration: none;
+	color: #fff;
+	text-transform: capitalize;
+	font-size: 30px;
+	padding: 0px 10px;
+	font-family: berkshire swash;
+}
+.banner-text h2 {
+	text-align: center;
+	color: #fff;
+	font-size: 50px;
+	margin-top: 15%;
+	margin-bottom: 15px;
+	font-family: berkshire swash;
+	letter-spacing: 3px;
+}
+.banner-text p {
+	text-align: center;
+	font-size: 18px;
+	width: 35%;
+	margin: auto;
+	color: #ddd;
+	line-height: 1.7;
+}
+.animation-area {
+	background: linear-gradient(to right, rgb(41, 128, 185), rgb(142, 68, 173));
+	width: 100%;
+	height: 100vh;
+}
+.box-area {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.box-area li {
+    text-align: center;
+	position: absolute;
+	display: block;
+	list-style: none;
+	width: 0;
+	height: 0;
+	border: 80px solid rgba(255, 255, 255, 0.2);
+	
+	animation: animate 20s linear infinite;
+	bottom: 650px;
+}
+.box-area li:nth-child(1) {
+	left: 86%;
+	animation-delay: 0s;
+}
+.box-area li:nth-child(2) {
+	left: 12%;
+	animation-delay: 1.5s;
+	animation-duration: 10s;
+}
+.box-area li:nth-child(3) {
+	left: 70%;
+	animation-delay: 5.5s;
+}
+.box-area li:nth-child(4) {
+	left: 42%;
+	animation-delay: 0s;
+	animation-duration: 15s;
+}
+.box-area li:nth-child(5) {
+	left: 65%;
+	animation-delay: 0s;
+}
+.box-area li:nth-child(6) {
+	left: 23%;
+	animation-delay: 3.5s;
+}
+@keyframes animate {
+	0% {
+		transform: translateY(0) scale(0);
+	}
+	100% {
+		transform: translateY(800px) scale(2);
+		opacity: 0;
+	}
+}
+.anc:hover{
+  text-decoration: underline;
+}
+</style>
+</head>
+<body>
+    <div class="banner-text" style="background-position: center;">
+        <ul>
+            <li><a href="index.html">Home</a></li>                                  
+            <li><label for="menu" style="height:100%;font-size: 30px; color: #fff; background-color: transparent; cursor: pointer;">Menu</label>
+			<select name="menu" id="menu" style="cursor: pointer;">
+				<option value="--menu--">--menu--</option>
+				<option value="AI & ML">AI & ML</option>
+				<option value="Cyber security">Cyber security</option>
+				<option value="Data Science">Data Science</option>
+			</select></li>            
+            <li><a href="login.html">Login</a></li>   
+            <li><a href="about.html">About</a></li>         
+        </ul>
+        
+    </div>
+    <div class="wel" style="text-align:center;color:bisque ;background:linear-gradient(to right, rgb(41, 128, 185), rgb(142, 68, 173));"><ul><li><h1>BOOKRACK</h1></li></ul></div>
+    <div class="animation-area">
+        <ul class="box-area">
+            <li>ECE</li>
+            <li>IOT</li>
+            <li>DS</li>
+            <li>CS</li>
+            <li>ML</li>
+            <li>AI</li> 
+        </ul>
+        <div class="row">
+			<div class="container">
+			  <div class="grid-items">
+          <div class="grid-item">
+            <div class="grid-header">
+              <img src="Cyber Security.jpg" alt="pins">
+            </div>
+            <div class="content-wrap">
+              <a href="#" class="authorAvatar">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Book-icon-bible.png/600px-Book-icon-bible.png?20201013125426" alt="Author Avatar">
+              </a>
+              <div class="title">
+                <a class="anc" href="cyber.html" style="text-decoration: none; font-size: 12px; color:#000;"><h2>Books related Cyber Security</h2></a>
+                <span>Famous book</span>
+              </div>
+            </div>
+            <div class="footer-wrap">
+              <div class="flex-col">
+                <a href="cyber.html">
+                    <button><i class="fa fa-eye" aria-hidden="true"></i>Click Here</button></a>
+              </div>
+            </div>
+            <div class="expand-btn"><svg id="expand" viewBox="0 0 100 100"><path d="M3.563-.004a3.573 3.573 0 00-3.527 4.09l-.004-.02v28.141c0 1.973 1.602 3.57 3.57 3.57s3.57-1.598 3.57-3.57V12.218v.004l22.461 22.461a3.571 3.571 0 006.093-2.527c0-.988-.398-1.879-1.047-2.523L12.218 7.172h19.989c1.973 0 3.57-1.602 3.57-3.57s-1.598-3.57-3.57-3.57H4.035a3.008 3.008 0 00-.473-.035zM96.333 0l-.398.035.02-.004h-28.16a3.569 3.569 0 00-3.57 3.57 3.569 3.569 0 003.57 3.57h19.989L65.323 29.632a3.555 3.555 0 00-1.047 2.523 3.571 3.571 0 006.093 2.527L92.83 12.221v19.985a3.569 3.569 0 003.57 3.57 3.569 3.569 0 003.57-3.57V4.034v.004a3.569 3.569 0 00-3.539-4.043l-.105.004zM3.548 64.23A3.573 3.573 0 00.029 67.8v28.626-.004l.016.305-.004-.016.004.059v-.012l.039.289-.004-.023.023.121-.004-.023c.074.348.191.656.34.938l-.008-.02.055.098-.008-.02.148.242-.008-.012.055.082-.008-.012c.199.285.43.531.688.742l.008.008.031.027.004.004c.582.461 1.32.742 2.121.762h.004l.078.004h28.61a3.569 3.569 0 003.57-3.57 3.569 3.569 0 00-3.57-3.57H12.224l22.461-22.461a3.569 3.569 0 00-2.492-6.125l-.105.004h.008a3.562 3.562 0 00-2.453 1.074L7.182 87.778V67.793a3.571 3.571 0 00-3.57-3.57h-.055.004zm92.805 0a3.573 3.573 0 00-3.519 3.57v19.993-.004L70.373 65.328a3.553 3.553 0 00-2.559-1.082h-.004a3.573 3.573 0 00-3.566 3.57c0 1.004.414 1.91 1.082 2.555l22.461 22.461H67.802a3.57 3.57 0 100 7.14h28.606c.375 0 .742-.059 1.082-.168l-.023.008.027-.012-.02.008.352-.129-.023.008.039-.02-.02.008.32-.156-.02.008.023-.016-.008.008c.184-.102.34-.207.488-.32l-.008.008.137-.113-.008.004.223-.211.008-.008c.156-.164.301-.34.422-.535l.008-.016-.008.016.008-.02.164-.285.008-.02-.008.016.008-.02c.098-.188.184-.406.246-.633l.008-.023-.004.008.008-.023a3.44 3.44 0 00.121-.852v-.004l.004-.078V67.804a3.569 3.569 0 00-3.57-3.57h-.055.004z"></path></svg></div>
+          </div>
+				<div class="grid-item" style="margin-top: 20px;">
+				  <div class="grid-header">
+					<img src="AI&ML.jpg" alt="Machine Learning & Artificial Intelligence">
+				  </div>
+				  <div class="content-wrap">
+					<a href="#" class="authorAvatar">
+					  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Book-icon-bible.png/600px-Book-icon-bible.png?20201013125426" alt="Author Avatar">
+					</a>
+					<div class="title">
+					  <h2>Book related AI & ML</h2>
+					  <span>Famous Authors</span>
+					</div>
+				  </div>
+				  <div class="footer-wrap">
+					<div class="flex-col">
+					  <a href="#">
+						  <button><i class="fa fa-eye" aria-hidden="true"></i>Click Here</button></a>
+					</div>
+				  </div>
+				  <div class="expand-btn"><svg id="expand" viewBox="0 0 100 100"><path d="M3.563-.004a3.573 3.573 0 00-3.527 4.09l-.004-.02v28.141c0 1.973 1.602 3.57 3.57 3.57s3.57-1.598 3.57-3.57V12.218v.004l22.461 22.461a3.571 3.571 0 006.093-2.527c0-.988-.398-1.879-1.047-2.523L12.218 7.172h19.989c1.973 0 3.57-1.602 3.57-3.57s-1.598-3.57-3.57-3.57H4.035a3.008 3.008 0 00-.473-.035zM96.333 0l-.398.035.02-.004h-28.16a3.569 3.569 0 00-3.57 3.57 3.569 3.569 0 003.57 3.57h19.989L65.323 29.632a3.555 3.555 0 00-1.047 2.523 3.571 3.571 0 006.093 2.527L92.83 12.221v19.985a3.569 3.569 0 003.57 3.57 3.569 3.569 0 003.57-3.57V4.034v.004a3.569 3.569 0 00-3.539-4.043l-.105.004zM3.548 64.23A3.573 3.573 0 00.029 67.8v28.626-.004l.016.305-.004-.016.004.059v-.012l.039.289-.004-.023.023.121-.004-.023c.074.348.191.656.34.938l-.008-.02.055.098-.008-.02.148.242-.008-.012.055.082-.008-.012c.199.285.43.531.688.742l.008.008.031.027.004.004c.582.461 1.32.742 2.121.762h.004l.078.004h28.61a3.569 3.569 0 003.57-3.57 3.569 3.569 0 00-3.57-3.57H12.224l22.461-22.461a3.569 3.569 0 00-2.492-6.125l-.105.004h.008a3.562 3.562 0 00-2.453 1.074L7.182 87.778V67.793a3.571 3.571 0 00-3.57-3.57h-.055.004zm92.805 0a3.573 3.573 0 00-3.519 3.57v19.993-.004L70.373 65.328a3.553 3.553 0 00-2.559-1.082h-.004a3.573 3.573 0 00-3.566 3.57c0 1.004.414 1.91 1.082 2.555l22.461 22.461H67.802a3.57 3.57 0 100 7.14h28.606c.375 0 .742-.059 1.082-.168l-.023.008.027-.012-.02.008.352-.129-.023.008.039-.02-.02.008.32-.156-.02.008.023-.016-.008.008c.184-.102.34-.207.488-.32l-.008.008.137-.113-.008.004.223-.211.008-.008c.156-.164.301-.34.422-.535l.008-.016-.008.016.008-.02.164-.285.008-.02-.008.016.008-.02c.098-.188.184-.406.246-.633l.008-.023-.004.008.008-.023a3.44 3.44 0 00.121-.852v-.004l.004-.078V67.804a3.569 3.569 0 00-3.57-3.57h-.055.004z"></path></svg></div>
+				</div>
+        <div class="grid-item">
+          <div class="grid-header">
+            <img src="Data Science.jpg" alt="pins">
+          </div>
+          <div class="content-wrap">
+            <a href="#" class="authorAvatar">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Book-icon-bible.png/600px-Book-icon-bible.png?20201013125426" alt="Author Avatar">
+            </a>
+            <div class="title">
+              <h2>Data Science</h2>
+              <span>Best Introduction</span>
+            </div>
+          </div>
+          <div class="footer-wrap">
+            <div class="flex-col">
+              <a href="#">
+                  <button><i class="fa fa-eye" aria-hidden="true"></i>Click Here</button></a>
+            </div>
+          </div>
+          <div class="expand-btn">
+            <svg id="expand" viewBox="0 0 100 100"><path d="M3.563-.004a3.573 3.573 0 00-3.527 4.09l-.004-.02v28.141c0 1.973 1.602 3.57 3.57 3.57s3.57-1.598 3.57-3.57V12.218v.004l22.461 22.461a3.571 3.571 0 006.093-2.527c0-.988-.398-1.879-1.047-2.523L12.218 7.172h19.989c1.973 0 3.57-1.602 3.57-3.57s-1.598-3.57-3.57-3.57H4.035a3.008 3.008 0 00-.473-.035zM96.333 0l-.398.035.02-.004h-28.16a3.569 3.569 0 00-3.57 3.57 3.569 3.569 0 003.57 3.57h19.989L65.323 29.632a3.555 3.555 0 00-1.047 2.523 3.571 3.571 0 006.093 2.527L92.83 12.221v19.985a3.569 3.569 0 003.57 3.57 3.569 3.569 0 003.57-3.57V4.034v.004a3.569 3.569 0 00-3.539-4.043l-.105.004zM3.548 64.23A3.573 3.573 0 00.029 67.8v28.626-.004l.016.305-.004-.016.004.059v-.012l.039.289-.004-.023.023.121-.004-.023c.074.348.191.656.34.938l-.008-.02.055.098-.008-.02.148.242-.008-.012.055.082-.008-.012c.199.285.43.531.688.742l.008.008.031.027.004.004c.582.461 1.32.742 2.121.762h.004l.078.004h28.61a3.569 3.569 0 003.57-3.57 3.569 3.569 0 00-3.57-3.57H12.224l22.461-22.461a3.569 3.569 0 00-2.492-6.125l-.105.004h.008a3.562 3.562 0 00-2.453 1.074L7.182 87.778V67.793a3.571 3.571 0 00-3.57-3.57h-.055.004zm92.805 0a3.573 3.573 0 00-3.519 3.57v19.993-.004L70.373 65.328a3.553 3.553 0 00-2.559-1.082h-.004a3.573 3.573 0 00-3.566 3.57c0 1.004.414 1.91 1.082 2.555l22.461 22.461H67.802a3.57 3.57 0 100 7.14h28.606c.375 0 .742-.059 1.082-.168l-.023.008.027-.012-.02.008.352-.129-.023.008.039-.02-.02.008.32-.156-.02.008.023-.016-.008.008c.184-.102.34-.207.488-.32l-.008.008.137-.113-.008.004.223-.211.008-.008c.156-.164.301-.34.422-.535l.008-.016-.008.016.008-.02.164-.285.008-.02-.008.016.008-.02c.098-.188.184-.406.246-.633l.008-.023-.004.008.008-.023a3.44 3.44 0 00.121-.852v-.004l.004-.078V67.804a3.569 3.569 0 00-3.57-3.57h-.055.004z"></path></svg>
+          </div>
+        </div>
+        
+    </div>	
+</body>
+</html>
