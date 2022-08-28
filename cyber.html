@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  --container:1140px;
+  font-family: 'Lato',Sans-Serif;
+  font-weight: 900;
+  color: #fff;
+}
+body {
+  background: linear-gradient(to right, rgb(41, 128, 185), rgb(142, 68, 173));
+  
+  display: flex;
+  overflow: visible;
+}
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+.container {
+  width: var(--container);
+  margin: auto;
+}
+.grid-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    -webkit-box-align: start;
+    -webkit-align-items: start;
+    -ms-flex-align: start;
+    align-items: start;
+    justify-items: center;
+    grid-gap: 4rem 3rem;
+    margin-top: 100px;
+}
+.grid-item {
+  display: block;
+  width: 300px;
+  height:100%;
+  position: relative;
+  cursor: pointer;
+}
+
+.grid-item:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: -2rem;
+    left: 0;
+    margin: -1rem;
+    border-radius: 10px;
+    overflow: visible;
+    z-index: -1;
+    background: #1f2229;
+    -webkit-clip-path: inset(2rem 0 4rem 2rem round 10px);
+    clip-path: inset(2rem 0 4rem 2rem round 10px);
+    contain: strict;
+    -webkit-transition: -webkit-clip-path 0.3s ease 0.1s;
+    transition: -webkit-clip-path 0.3s ease 0.1s;
+    transition: clip-path 0.3s ease 0.1s;
+    transition: clip-path 0.3s ease 0.1s, -webkit-clip-path 0.3s ease 0.1s;
+}
+
+
+.grid-item:hover::after {
+    -webkit-clip-path: inset(0 0 0 0 round 10px);
+    clip-path: inset(0 0 0 0 round 10px);
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+    bottom: 0; 
+}
+
+img {
+  width: 70%;
+  max-width: 100%;
+}
+.grid-header {
+    margin-bottom: 12px;
+}
+.grid-header > img,
+.authorAvatar > img{
+    border-radius: 6px;
+}
+.content-wrap {
+    display: grid;
+    grid-template-columns: 13% 85%;
+    column-gap: 2%;
+    align-items: center;
+    justify-content: center;
+}
+.title {
+    padding-left: 5px;
+}
+.title > h2 {
+    font-size: 17px;
+}
+span {
+    color: #c0c3d0;
+    font-weight: 100;
+}
+
+
+.expand-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    appearance: none;
+    border: none;
+    padding: .5rem;
+    background: linear-gradient(to right, rgb(41, 128, 185), rgb(142, 68, 173));
+    border-radius: 6px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,.4);
+    transform: translate(.25rem) scale(.9);
+    transition: .25s cubic-bezier(.5,0,.5,1);
+    opacity: 0;
+}
+.grid-item:hover .expand-btn {
+  opacity: 1;
+}
+.expand-btn:hover {
+    transform: translate(.25rem) scale(1.2);
+}
+.expand-btn:hover svg {
+  fill: #fff;
+} 
+.expand-btn svg {
+    display: block;
+    fill: #aaaebc;
+    width: 20px;
+    height: 20px;
+}
+
+button {
+    margin-right: 5px;
+    background: rgba(0,0,0,0.9);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem 0.2rem;
+    transition: .25s cubic-bezier(.5,0,.5,1);
+    border: unset;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 12px;
+    color:#fff
+}
+button:hover {
+    background: #fff;
+    color: #000;
+}
+button > i {
+  margin-right: 5px;
+}
+button:hover i {
+  color: #47cf73;
+}
+.footer-wrap {
+    opacity: 0;
+    margin-top: 10px;
+    transition: .25s cubic-bezier(.5,0,.5,1);
+}
+.grid-item:hover .footer-wrap {
+  opacity: 1;
+}
+.banner-text {
+    width: 100%;
+	position: absolute;
+	z-index: 1;
+}
+
+.banner-text ul {
+	height: 50px;
+	margin-top: 2%;
+	margin-left: 17%;
+	display: flex;
+	justify-content: center;
+	box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.9);
+	width:65%;
+  overflow: visible;
+  position: fixed;
+}
+.banner-text ul li {
+	display: inline-block;
+	padding:  6px;
+	padding-left: 5%;
+	padding-right: 5%;
+	cursor: pointer;
+	transition: 0.4s;
+	
+}
+.banner-text ul li:hover{
+	background-color: rgba(255, 255, 255, 0.47);
+	transform: scale(1.2);
+	border-radius: 10px;
+	box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.9);
+}
+.banner-text ul li a {
+	text-decoration: none;
+	color: #fff;
+	text-transform: capitalize;
+	font-size: 30px;
+	padding: 0px 10px;
+	font-family: berkshire swash;
+}
+.banner-text ul li a:hover {
+
+    
+}
+option{
+    color: #000;
+}
+    </style>
+  </head>
+  <body>
+    <div class="banner-text">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><label for="menu" style="height:100%;font-size: 30px; color: #fff; background-color: transparent; cursor: pointer;">Menu</label>
+                <select name="menu" id="menu" style="cursor: pointer;color: #000;">
+                    <option value="--menu--">--menu--</option>
+                    <option value="AI & ML">AI & ML</option>
+                    <option value="Cyber security">Cyber security</option>
+                    <option value="Data Science">Data Science</option>
+                </select></li>            
+            <li><a href="login.html">Login</a></li>
+            <li><a href="about.html">About</a></li>            
+        </ul>
+        
+    </div>
+    <div class="row">
+        <a href="index.html"><form action="cbsnxt.html"><button type="button" style="margin-left:150% ;" value="<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fast-forward" viewBox="0 0 16 16">
+            <path d="M6.804 8 1 4.633v6.734L6.804 8Zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692Z"/>
+            <path d="M14.804 8 9 4.633v6.734L14.804 8Zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692Z"/>
+          </svg>HOME</button></form></a>
+      <div class="container">
+        <div class="grid-items">
+          <div class="grid-item">
+            <div class="grid-header">
+              <img src="https://images-na.ssl-images-amazon.com/images/I/51dFjop3M4L._SX331_BO1,204,203,200_.jpg" alt="Hacking: A Beginners’ Guide to Computer Hacking, Basic Security, And Penetration Testing">
+            </div>
+            <div class="content-wrap">
+              <a href="#" class="authorAvatar">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Book-icon-bible.png/600px-Book-icon-bible.png?20201013125426" alt="Author Avatar">
+              </a>
+              <div class="title">
+                <h2>Hacking: A Beginners’ Guide to Computer Hacking, Basic Security, And Penetration Testing</h2>
+                <span>John Slavio</span>
+              </div>
+            </div>
+            <div class="footer-wrap">
+              <div class="flex-col">
+                <a href="#">
+                    <button><i class="fa-regular fa-f"></i>Flipkart</button></a>
+                <a href="https://www.amazon.in/Hacking-Beginners-Computer-Penetration-beginners/dp/1520467559">
+                    <button><i class="fa-thin fa-cart-shopping"></i>Amazon</button></a>
+                <a href="https://books.google.co.in/books/about/Hacking.html?id=7RnMtAEACAAJ&redir_esc=y">
+                    <button><i class="fa-brands fa-google"></i>Google Play</button></a>
+              </div>
+            </div>
+            <div class="expand-btn"><svg id="expand" viewBox="0 0 100 100"><path d="M3.563-.004a3.573 3.573 0 00-3.527 4.09l-.004-.02v28.141c0 1.973 1.602 3.57 3.57 3.57s3.57-1.598 3.57-3.57V12.218v.004l22.461 22.461a3.571 3.571 0 006.093-2.527c0-.988-.398-1.879-1.047-2.523L12.218 7.172h19.989c1.973 0 3.57-1.602 3.57-3.57s-1.598-3.57-3.57-3.57H4.035a3.008 3.008 0 00-.473-.035zM96.333 0l-.398.035.02-.004h-28.16a3.569 3.569 0 00-3.57 3.57 3.569 3.569 0 003.57 3.57h19.989L65.323 29.632a3.555 3.555 0 00-1.047 2.523 3.571 3.571 0 006.093 2.527L92.83 12.221v19.985a3.569 3.569 0 003.57 3.57 3.569 3.569 0 003.57-3.57V4.034v.004a3.569 3.569 0 00-3.539-4.043l-.105.004zM3.548 64.23A3.573 3.573 0 00.029 67.8v28.626-.004l.016.305-.004-.016.004.059v-.012l.039.289-.004-.023.023.121-.004-.023c.074.348.191.656.34.938l-.008-.02.055.098-.008-.02.148.242-.008-.012.055.082-.008-.012c.199.285.43.531.688.742l.008.008.031.027.004.004c.582.461 1.32.742 2.121.762h.004l.078.004h28.61a3.569 3.569 0 003.57-3.57 3.569 3.569 0 00-3.57-3.57H12.224l22.461-22.461a3.569 3.569 0 00-2.492-6.125l-.105.004h.008a3.562 3.562 0 00-2.453 1.074L7.182 87.778V67.793a3.571 3.571 0 00-3.57-3.57h-.055.004zm92.805 0a3.573 3.573 0 00-3.519 3.57v19.993-.004L70.373 65.328a3.553 3.553 0 00-2.559-1.082h-.004a3.573 3.573 0 00-3.566 3.57c0 1.004.414 1.91 1.082 2.555l22.461 22.461H67.802a3.57 3.57 0 100 7.14h28.606c.375 0 .742-.059 1.082-.168l-.023.008.027-.012-.02.008.352-.129-.023.008.039-.02-.02.008.32-.156-.02.008.023-.016-.008.008c.184-.102.34-.207.488-.32l-.008.008.137-.113-.008.004.223-.211.008-.008c.156-.164.301-.34.422-.535l.008-.016-.008.016.008-.02.164-.285.008-.02-.008.016.008-.02c.098-.188.184-.406.246-.633l.008-.023-.004.008.008-.023a3.44 3.44 0 00.121-.852v-.004l.004-.078V67.804a3.569 3.569 0 00-3.57-3.57h-.055.004z"></path></svg></div>
+          </div>
+          <div class="grid-item">
+            <div class="grid-header">
+              <img src="https://images-na.ssl-images-amazon.com/images/I/61WRz4V+ADL._SX258_BO1,204,203,200_.jpg" alt="Hacking: The Art Of Exploitation">
+            </div>
+            <div class="content-wrap">
+              <a href="#" class="authorAvatar">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Book-icon-bible.png/600px-Book-icon-bible.png?20201013125426" alt="Author Avatar">
+              </a>
+              <div class="title">
+                <h2>Hacking: The Art Of Exploitation</h2>
+                <span>Jon Erickson </span>
+              </div>
+            </div>
+            <div class="footer-wrap">
+              <div class="flex-col">
+                <a href="https://www.flipkart.com/hacking-art-exploitation-2nd/p/itmf3jnsxabz9gmf">
+                    <button><i class="fa-regular fa-f"></i>Flipkart</button></a>
+                <a href="https://www.amazon.in/Hacking-Art-Exploitation-Jon-Erickson/dp/1593271441">
+                    <button><i class="fa-thin fa-cart-shopping"></i>Amazon</button></a>
+                <a href="https://books.google.co.in/books/about/Hacking_The_Art_of_Exploitation_2nd_Edit.html?id=0FW3DMNhl1EC&redir_esc=y">
+                    <button><i class="fa-brands fa-google"></i>Google Play</button></a>
+              </div>
+            </div>
+            <div class="expand-btn"><svg id="expand" viewBox="0 0 100 100"><path d="M3.563-.004a3.573 3.573 0 00-3.527 4.09l-.004-.02v28.141c0 1.973 1.602 3.57 3.57 3.57s3.57-1.598 3.57-3.57V12.218v.004l22.461 22.461a3.571 3.571 0 006.093-2.527c0-.988-.398-1.879-1.047-2.523L12.218 7.172h19.989c1.973 0 3.57-1.602 3.57-3.57s-1.598-3.57-3.57-3.57H4.035a3.008 3.008 0 00-.473-.035zM96.333 0l-.398.035.02-.004h-28.16a3.569 3.569 0 00-3.57 3.57 3.569 3.569 0 003.57 3.57h19.989L65.323 29.632a3.555 3.555 0 00-1.047 2.523 3.571 3.571 0 006.093 2.527L92.83 12.221v19.985a3.569 3.569 0 003.57 3.57 3.569 3.569 0 003.57-3.57V4.034v.004a3.569 3.569 0 00-3.539-4.043l-.105.004zM3.548 64.23A3.573 3.573 0 00.029 67.8v28.626-.004l.016.305-.004-.016.004.059v-.012l.039.289-.004-.023.023.121-.004-.023c.074.348.191.656.34.938l-.008-.02.055.098-.008-.02.148.242-.008-.012.055.082-.008-.012c.199.285.43.531.688.742l.008.008.031.027.004.004c.582.461 1.32.742 2.121.762h.004l.078.004h28.61a3.569 3.569 0 003.57-3.57 3.569 3.569 0 00-3.57-3.57H12.224l22.461-22.461a3.569 3.569 0 00-2.492-6.125l-.105.004h.008a3.562 3.562 0 00-2.453 1.074L7.182 87.778V67.793a3.571 3.571 0 00-3.57-3.57h-.055.004zm92.805 0a3.573 3.573 0 00-3.519 3.57v19.993-.004L70.373 65.328a3.553 3.553 0 00-2.559-1.082h-.004a3.573 3.573 0 00-3.566 3.57c0 1.004.414 1.91 1.082 2.555l22.461 22.461H67.802a3.57 3.57 0 100 7.14h28.606c.375 0 .742-.059 1.082-.168l-.023.008.027-.012-.02.008.352-.129-.023.008.039-.02-.02.008.32-.156-.02.008.023-.016-.008.008c.184-.102.34-.207.488-.32l-.008.008.137-.113-.008.004.223-.211.008-.008c.156-.164.301-.34.422-.535l.008-.016-.008.016.008-.02.164-.285.008-.02-.008.016.008-.02c.098-.188.184-.406.246-.633l.008-.023-.004.008.008-.023a3.44 3.44 0 00.121-.852v-.004l.004-.078V67.804a3.569 3.569 0 00-3.57-3.57h-.055.004z"></path></svg></div>
+          </div> 
+          <div class="grid-item">
+            <div class="grid-header">
+              <img src="https://rukminim1.flixcart.com/image/416/416/l5jxt3k0/book/d/h/v/metasploit-original-imagg7z7xeuab88g.jpeg?q=70" alt="Metasploit: The Penetration Tester’s Guide">
+            </div>
+            <div class="content-wrap">
+              <a href="#" class="authorAvatar">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Book-icon-bible.png/600px-Book-icon-bible.png?20201013125426" alt="Author Avatar">
+              </a>
+              <div class="title">
+                <h2>Metasploit: The Penetration Tester’s Guide</h2>
+                <span>David Kennedys</span>
+              </div>
+            </div>
+            <div class="footer-wrap">
+              <div class="flex-col">
+                <a href="https://www.flipkart.com/metasploit/p/itm31a2bb59fa3d1">
+                    <button><i class="fa-regular fa-f"></i>Flipkart</button></a>
+                <a href="https://www.amazon.in/Metasploit-Penetration-Testers-David-Kennedy-ebook/dp/B005EI84KQ">
+                    <button><i class="fa-thin fa-cart-shopping"></i>Amazon</button></a>
+                <a href="https://books.google.co.in/books/about/Metasploit.html?id=T9HKgEOCYZEC&redir_esc=y">
+                    <button><i class="fa-brands fa-google"></i>Google Play</button></a>
+              </div>
+            </div>
+            <div class="expand-btn"><svg id="expand" viewBox="0 0 100 100"><path d="M3.563-.004a3.573 3.573 0 00-3.527 4.09l-.004-.02v28.141c0 1.973 1.602 3.57 3.57 3.57s3.57-1.598 3.57-3.57V12.218v.004l22.461 22.461a3.571 3.571 0 006.093-2.527c0-.988-.398-1.879-1.047-2.523L12.218 7.172h19.989c1.973 0 3.57-1.602 3.57-3.57s-1.598-3.57-3.57-3.57H4.035a3.008 3.008 0 00-.473-.035zM96.333 0l-.398.035.02-.004h-28.16a3.569 3.569 0 00-3.57 3.57 3.569 3.569 0 003.57 3.57h19.989L65.323 29.632a3.555 3.555 0 00-1.047 2.523 3.571 3.571 0 006.093 2.527L92.83 12.221v19.985a3.569 3.569 0 003.57 3.57 3.569 3.569 0 003.57-3.57V4.034v.004a3.569 3.569 0 00-3.539-4.043l-.105.004zM3.548 64.23A3.573 3.573 0 00.029 67.8v28.626-.004l.016.305-.004-.016.004.059v-.012l.039.289-.004-.023.023.121-.004-.023c.074.348.191.656.34.938l-.008-.02.055.098-.008-.02.148.242-.008-.012.055.082-.008-.012c.199.285.43.531.688.742l.008.008.031.027.004.004c.582.461 1.32.742 2.121.762h.004l.078.004h28.61a3.569 3.569 0 003.57-3.57 3.569 3.569 0 00-3.57-3.57H12.224l22.461-22.461a3.569 3.569 0 00-2.492-6.125l-.105.004h.008a3.562 3.562 0 00-2.453 1.074L7.182 87.778V67.793a3.571 3.571 0 00-3.57-3.57h-.055.004zm92.805 0a3.573 3.573 0 00-3.519 3.57v19.993-.004L70.373 65.328a3.553 3.553 0 00-2.559-1.082h-.004a3.573 3.573 0 00-3.566 3.57c0 1.004.414 1.91 1.082 2.555l22.461 22.461H67.802a3.57 3.57 0 100 7.14h28.606c.375 0 .742-.059 1.082-.168l-.023.008.027-.012-.02.008.352-.129-.023.008.039-.02-.02.008.32-.156-.02.008.023-.016-.008.008c.184-.102.34-.207.488-.32l-.008.008.137-.113-.008.004.223-.211.008-.008c.156-.164.301-.34.422-.535l.008-.016-.008.016.008-.02.164-.285.008-.02-.008.016.008-.02c.098-.188.184-.406.246-.633l.008-.023-.004.008.008-.023a3.44 3.44 0 00.121-.852v-.004l.004-.078V67.804a3.569 3.569 0 00-3.57-3.57h-.055.004z"></path></svg></div>
+          </div> 
+                
+        </div>
+      </div>
+      <a href="cbsnxt.html"><form action="cbsnxt.html"><button type="button" style="margin-left:-130% ;" value="<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fast-forward" viewBox="0 0 16 16">
+        <path d="M6.804 8 1 4.633v6.734L6.804 8Zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692Z"/>
+        <path d="M14.804 8 9 4.633v6.734L14.804 8Zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692Z"/>
+      </svg>NEXT</button></form></a>
+    </div>
+  </body>
